@@ -31,7 +31,8 @@ public class CreateOrderTest {
 
     private List<String> colors;
     int courierId;
-    public CreateOrderTest(List<String> colors) {
+    public CreateOrderTest(List<String> colors)
+    {
         this.colors = colors;
     }
     private final CourierClient client = new CourierClient();
@@ -44,16 +45,15 @@ public class CreateOrderTest {
     @Step("Создание заказа с именем, фамилией, адресом, количеством, телефоном, оплатой, датой, комментариями и цветом + проверка ответа")
     public void testCreateOrder() {
 
-        Order order = new Order("Дроу",
-                "Ренджер",
-                "Дота 2",
-                2,
-                "89067001995",
-                2,
-                "25-08-2024",
-                "Возьмите стрелы",
+        Order order = new Order("Drow",
+                "Ranger",
+                "Blueside st. apt 5",
+                5,
+                "+7(999)999-99-95",
+                5,
+                "08-12-2024",
+                "no comments",
                 colors);
-
 
         Response response = OrderClient.postOrder(order);
         OrderClient.validateResponseStatus(response, HttpURLConnection.HTTP_CREATED);
